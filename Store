@@ -1,0 +1,47 @@
+{
+  "name": "Store",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 60,
+      "description": "Store name"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Store contact email"
+    },
+    "address": {
+      "type": "string",
+      "maxLength": 400,
+      "description": "Store address"
+    },
+    "owner_id": {
+      "type": "string",
+      "description": "ID of the store owner user"
+    },
+    "average_rating": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 5,
+      "default": 0,
+      "description": "Calculated average rating"
+    }
+  },
+  "required": [
+    "name",
+    "email",
+    "address",
+    "owner_id"
+  ],
+  "rls": {
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "write": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

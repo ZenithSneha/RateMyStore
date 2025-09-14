@@ -1,0 +1,33 @@
+{
+  "name": "Rating",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "ID of the user who submitted the rating"
+    },
+    "store_id": {
+      "type": "string",
+      "description": "ID of the store being rated"
+    },
+    "rating_value": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "Rating value from 1 to 5"
+    }
+  },
+  "required": [
+    "user_id",
+    "store_id",
+    "rating_value"
+  ],
+  "rls": {
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "write": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}
